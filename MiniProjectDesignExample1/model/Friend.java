@@ -19,9 +19,14 @@ public class Friend
     /**
      * Constructor for objects of class Friend
      */
-    public Friend()
+    public Friend(String name,String address,String postalCode,String city,String phone)
     {
         // initialise instance variables
+        this.name = name;
+        this.address = address;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.phone = phone;
     }
     public String getName(){
         return name;
