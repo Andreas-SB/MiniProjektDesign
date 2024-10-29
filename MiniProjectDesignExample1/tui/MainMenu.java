@@ -31,20 +31,20 @@ public class MainMenu {
         while (running) {
             int choice = writeMainMenu();
             switch (choice) {
-                case 1:
+                case 1: // Lånermenu
                   System.out.println("Denne er ikke implementeret endnu");
                   break;
-                case 2:
+                case 2: // LP menu
                   System.out.println("Denne er ikke implementeret endnu");
                   break;
-                case 3:
+                case 3: // Udlånsmenu
                   loanMenu.start();
                   break;
-                case 9:
+                case 9: // Generer testdata
                   System.out.println("Denne er ikke implementeret endnu");
                   createTestData();
                   break;
-                case 0:
+                case 0: // Afslut programmet
                   System.out.println("Tak for denne gang.");
                   running = false;
                   break;
