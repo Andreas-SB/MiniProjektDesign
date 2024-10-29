@@ -1,4 +1,6 @@
 package model;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 
 /**
@@ -11,6 +13,8 @@ public class FriendContainer
 {
     // instance variables - replace the example below with your own
     private int x;
+    private static FriendContainer  uniqueInstance;
+    private ArrayList<Friend>listFriends;
 
     /**
      * Constructor for objects of class FriendContainer
@@ -18,18 +22,25 @@ public class FriendContainer
     public FriendContainer()
     {
         // initialise instance variables
-        x = 0;
+        listFriends = new ArrayList<>();
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public void addFriend(Friend f){
+        listFriends.add(f);
+    }
+    public Friend findFriendByName(String name){
+        Friend friend = null;
+        boolean found = false;
+        Iterator<Friend> iterator = listFriends.iterator();
+        while(iterator.hasNext()&& !found){
+            Friend f = iterator.next();
+            if(name.equals(f.getName())){
+                found = true;
+                friend = f;
+            }
+        
+        }
+            
+        return friend;
     }
 }
