@@ -21,9 +21,15 @@ public class Loan
     /**
      * Constructor for objects of class Loan
      */
-    public Loan()
+    public Loan(String loanNumber, LocalDate borrowDate,LocalDate period,String state,LocalDate returnDate)
     {
         // initialise instance variables
+        this.loanNumber = loanNumber;
+        this.borrowDate = borrowDate;
+        this.period = period;
+        this.state = state;
+        this.returnDate = returnDate;
+        
     }
 
 }
