@@ -22,5 +22,8 @@ public class LP
     {
         // initialise instance variables
     }
+    public String getTitle(){
+        return title;
+    }
     
 }

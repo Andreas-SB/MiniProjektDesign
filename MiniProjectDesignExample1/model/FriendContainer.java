@@ -12,7 +12,6 @@ import java.util.Iterator;
 public class FriendContainer
 {
     // instance variables - replace the example below with your own
-    private int x;
     private static FriendContainer  uniqueInstance;
     private ArrayList<Friend>listFriends;
 
