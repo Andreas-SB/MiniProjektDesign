@@ -23,7 +23,12 @@ public class FriendContainer
         // initialise instance variables
         listFriends = new ArrayList<>();
     }
-
+    public static FriendContainer getUniqueInstance(){
+        if(uniqueInstance == null){
+            uniqueInstance = new FriendContainer();
+        }
+        return uniqueInstance;
+    }
     public void addFriend(Friend f){
         listFriends.add(f);
     }

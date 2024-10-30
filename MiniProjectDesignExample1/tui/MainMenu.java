@@ -1,5 +1,7 @@
 package tui;
 import java.util.Scanner;
+import model.Friend;
+import controller.FriendController;
 
 /**
  * Write a description of class MainMenu here.
@@ -40,6 +42,10 @@ public class MainMenu {
                 case 3: // Udlånsmenu
                   loanMenu.start();
                   break;
+                case 4:
+                    System.out.println("Opret en ven");
+                    createFriend();
+                    break;
                 case 9: // Generer testdata
                   System.out.println("Denne er ikke implementeret endnu");
                   createTestData();
@@ -61,6 +67,7 @@ public class MainMenu {
         System.out.println(" (1) Lånermenu");
         System.out.println(" (2) LP menu");
         System.out.println(" (3) Udlånsmenu");
+        System.out.println(" (4) Opret Ven");
         System.out.println(" (9) Generer testdata");// will generate testdata, delete in final version
         System.out.println(" (0) Afslut programmet");
         System.out.print("\n Vælg:");
@@ -72,7 +79,46 @@ public class MainMenu {
         int choice = keyboard.nextInt();
         return choice;
     }
-   
+    private void createFriend(){
+        String name = inputFriendName();
+        String address = inputFriendAddress();
+        String postalCode = inputFriendPostalCode();
+        String city = inputFriendCity();
+        String phone = inputFriendPhone();
+        FriendController controller = new FriendController();
+        Friend friend = controller.createFriend(name, address, postalCode,city, phone);
+        System.out.println("Ven lavet: " + friend.getName());
+    }
+    private String inputFriendName() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast navnet på din ven:  ");
+        String name = keyboard.nextLine();
+        return name;
+    }
+    private String inputFriendAddress() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast addressen på din ven:  ");
+        String address = keyboard.nextLine();
+        return address;
+    }
+    private String inputFriendPostalCode() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast postnummeret på din ven:  ");
+        String postalCode = keyboard.nextLine();
+        return postalCode;
+    }
+    private String inputFriendCity() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast byen din ven bor i:  ");
+        String city = keyboard.nextLine();
+        return city;
+    }
+    private String inputFriendPhone() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast din vens telefonnummer:  ");
+        String phone = keyboard.nextLine();
+        return phone;
+    }
     private void createTestData(){
         //getInstance
         //create some Friends and LPs
