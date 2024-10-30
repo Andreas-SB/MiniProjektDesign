@@ -1,4 +1,6 @@
 package controller;
+import model.LP;
+import model.LPContainer;
 
 
 /**
@@ -10,26 +12,16 @@ package controller;
 public class LPController
 {
     // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class LPController
-     */
+    
     public LPController()
     {
         // initialise instance variables
-        x = 0;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public LP createLP(String barcode, String title, String artist,String publicationDate){
+        LP l = new LP(barcode, title, artist, publicationDate);
+        LPContainer instance = LPContainer.getUniqueInstance();
+        instance.addLP(l);
+        return l;
     }
 }

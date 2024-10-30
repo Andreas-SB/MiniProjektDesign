@@ -26,6 +26,12 @@ public class LPContainer
     public void addLP(LP l){
         listLPS.add(l);
     }
+    public static LPContainer getUniqueInstance(){
+        if(uniqueInstance == null){
+            uniqueInstance = new LPContainer();
+        }
+        return uniqueInstance;
+    }
     public LP findLPByName(String name){
         LP lp = null;
         boolean found = false;

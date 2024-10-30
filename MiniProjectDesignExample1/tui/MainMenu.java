@@ -1,7 +1,9 @@
 package tui;
 import java.util.Scanner;
 import model.Friend;
+import model.LP;
 import controller.FriendController;
+import controller.LPController;
 
 /**
  * Write a description of class MainMenu here.
@@ -79,6 +81,7 @@ public class MainMenu {
         int choice = keyboard.nextInt();
         return choice;
     }
+    
     private void createFriend(){
         String name = inputFriendName();
         String address = inputFriendAddress();
@@ -118,6 +121,40 @@ public class MainMenu {
         System.out.println(" Indtast din vens telefonnummer:  ");
         String phone = keyboard.nextLine();
         return phone;
+    }
+    
+    private void createLP(){
+        String barcode = inputLPBarcode();
+        String title = inputLPTitle();
+        String artist = inputLPArtist();
+        String publicationDate = inputLPPublicationDate();
+        LPController controller = new LPController();
+        LP lp = controller.createLP(barcode, title, artist, publicationDate);
+        System.out.println("LP lavet: " + lp.getTitle());
+    }
+    private String inputLPBarcode() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast navnet på din ven:  ");
+        String barcode = keyboard.nextLine();
+        return barcode;
+    }
+    private String inputLPTitle() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast navnet på din ven:  ");
+        String title = keyboard.nextLine();
+        return title;
+    }
+    private String inputLPArtist() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast navnet på din ven:  ");
+        String artist = keyboard.nextLine();
+        return artist;
+    }
+    private String inputLPPublicationDate() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast navnet på din ven:  ");
+        String publicationDate = keyboard.nextLine();
+        return publicationDate;
     }
     private void createTestData(){
         //getInstance
