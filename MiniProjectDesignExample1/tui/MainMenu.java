@@ -13,6 +13,7 @@ public class MainMenu {
     // instance variables 
     private LoanMenu loanMenu;
     private FriendMenu friendMenu;
+    private LPMenu lpMenu;
 
     /**
      * Constructor for objects of class MainMenu
@@ -21,6 +22,7 @@ public class MainMenu {
         // initialise instance variables
         loanMenu = new LoanMenu();
         friendMenu = new FriendMenu();
+        lpMenu = new LPMenu();
        
     }
     
@@ -34,11 +36,12 @@ public class MainMenu {
             int choice = writeMainMenu();
             switch (choice) {
                 case 1: // Lånermenu
-                  System.out.println("Venne menu");
+                  System.out.println("Ven menu");
                   friendMenu.start();
                   break;
                 case 2: // LP menu
-                  System.out.println("Denne er ikke implementeret endnu");
+                  System.out.println("LP menu");
+                  lpMenu.start();
                   break;
                 case 3: // Udlånsmenu
                   loanMenu.start();
