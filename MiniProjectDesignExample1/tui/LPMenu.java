@@ -1,7 +1,9 @@
 package tui;
 import java.util.Scanner;
 import model.LP;
+import model.LPCopy;
 import controller.LPController;
+
 
 public class LPMenu
 {
@@ -31,6 +33,7 @@ public class LPMenu
                     break;
                 case 2: 
                     System.out.println(" (2) Opret LP kopi");
+                    createLPCopy();
                     break;
                 case 3: 
                     System.out.println(" (3) Søg LP");
@@ -66,7 +69,7 @@ public class LPMenu
     }
     
     private LP findLP() {
-        String title= inputLPTitle();
+        String title = inputLPTitle();
         LPController controller = new LPController();      
         LP lp = controller.findLP(title);
         return lp;
@@ -112,6 +115,46 @@ public class LPMenu
         System.out.println(" Indtast Udgivelsesdato på LP:  ");
         String publicationDate = keyboard.nextLine();
         return publicationDate;
+    }
+    
+    
+    private LP createLPCopy(){
+        String serialNumber = inputLPCopySerialNumber();
+        String purchaseDate = inputLPCopyPurchaseDate();
+        String purchasePrice = inputLPCopyPurchasePrice();
+        String condition = inputLPCopyCondition();
+        String title = inputLPTitle();
+        
+        //LP lp = findLP(title);
+        //LPController controller = new LPController();
+        //LP lp = controller.createLP(serialNumber, purchaseDate, purchasePrice, condition);
+        
+        //System.out.println("LP lavet: " + lp.getTitle());
+        return null;
+    }
+    private String inputLPCopySerialNumber() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast serienummer på LP:  ");
+        String serialNumber = keyboard.nextLine();
+        return serialNumber;
+    }
+    private String inputLPCopyPurchaseDate() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast indkøbsdato på LP:  ");
+        String purchaseDate = keyboard.nextLine();
+        return purchaseDate;
+    }
+    private String inputLPCopyPurchasePrice() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast indkøbspris på LP:  ");
+        String purchasePrice = keyboard.nextLine();
+        return purchasePrice;
+    }
+    private String inputLPCopyCondition() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast tilstand på LP:  ");
+        String condition = keyboard.nextLine();
+        return condition;
     }
 }
 

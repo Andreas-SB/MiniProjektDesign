@@ -1,5 +1,6 @@
 package controller;
 import model.LP;
+import model.LPCopy;
 import model.LPContainer;
 
 /**
@@ -24,7 +25,12 @@ public class LPController
         instance.addLP(l);
         return l;
     }
-
+    public LPCopy createLPCopy(String serialNumber, String purchaseDate, String purchasePrice,String condition){
+        LPCopy lc = new LPCopy(serialNumber, purchaseDate, purchasePrice, condition);
+        LPContainer instance = LPContainer.getUniqueInstance();
+        instance.addLPCopy(lc);
+        return lc;
+    }
     public LP findLP(String title){
         LPContainer instance = LPContainer.getUniqueInstance();
         foundLP = instance.findLPByTitle(title);

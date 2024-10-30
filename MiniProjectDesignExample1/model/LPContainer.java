@@ -14,17 +14,22 @@ public class LPContainer
     // instance variables - replace the example below with your own
     private static LPContainer  uniqueInstance;
     private ArrayList<LP>listLPS;
+    private ArrayList<LPCopy>listLPCopys;
 
     /**
      * Constructor for objects of class LPContainer
      */
-     public LPContainer()
+     private LPContainer()
     {
         // initialise instance variables
         listLPS = new ArrayList<>();
+        listLPCopys = new ArrayList<>();
     }
     public void addLP(LP l){
         listLPS.add(l);
+    }
+    public void addLPCopy(LPCopy lc){
+        listLPCopys.add(lc);
     }
     public static LPContainer getUniqueInstance(){
         if(uniqueInstance == null){
@@ -47,4 +52,20 @@ public class LPContainer
             
         return lp;
     }
+    public LPCopy findLPCopyByBarcode(String serialNumber){
+        LPCopy lpcopy = null;
+        boolean found = false;
+        Iterator<LPCopy> iterator = listLPCopys.iterator();
+        while(iterator.hasNext()&& !found){
+            LPCopy lc = iterator.next();
+            if(serialNumber.equals(lc.getSerialNumber())){
+                found = true;
+                lpcopy = lc;
+            }
+        
+        }
+            
+        return lpcopy;
+    }
+    
 }
