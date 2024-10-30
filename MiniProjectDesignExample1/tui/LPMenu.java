@@ -34,6 +34,13 @@ public class LPMenu
                     break;
                 case 3: 
                     System.out.println(" (3) Søg LP");
+                    LP lp = findLP();
+                     if (lp == null){
+                        System.out.println("LP er ikke fundet");
+                    }
+                    else{
+                        System.out.println("LP er fundet " + lp.getTitle());
+                    }
                     break;
                 case 0:
                     System.out.println(" (0) Tilbage");
@@ -56,6 +63,13 @@ public class LPMenu
         System.out.print("\n Vælg:");
         int choice = getIntegerFromUser(keyboard);
         return choice;
+    }
+    
+    private LP findLP() {
+        String title= inputLPTitle();
+        LPController controller = new LPController();      
+        LP lp = controller.findLP(title);
+        return lp;
     }
 
     private int getIntegerFromUser(Scanner keyboard) {

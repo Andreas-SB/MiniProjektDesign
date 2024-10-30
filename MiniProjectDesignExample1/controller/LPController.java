@@ -2,7 +2,6 @@ package controller;
 import model.LP;
 import model.LPContainer;
 
-
 /**
  * Write a description of class LPController here.
  *
@@ -12,7 +11,8 @@ import model.LPContainer;
 public class LPController
 {
     // instance variables - replace the example below with your own
-    
+        private LP foundLP;
+        
     public LPController()
     {
         // initialise instance variables
@@ -23,5 +23,11 @@ public class LPController
         LPContainer instance = LPContainer.getUniqueInstance();
         instance.addLP(l);
         return l;
+    }
+
+    public LP findLP(String title){
+        LPContainer instance = LPContainer.getUniqueInstance();
+        foundLP = instance.findLPByTitle(title);
+        return foundLP;
     }
 }

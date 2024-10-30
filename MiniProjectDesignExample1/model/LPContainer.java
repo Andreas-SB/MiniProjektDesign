@@ -32,13 +32,13 @@ public class LPContainer
         }
         return uniqueInstance;
     }
-    public LP findLPByName(String name){
+    public LP findLPByTitle(String title){
         LP lp = null;
         boolean found = false;
         Iterator<LP> iterator = listLPS.iterator();
         while(iterator.hasNext()&& !found){
             LP l = iterator.next();
-            if(name.equals(l.getTitle())){
+            if(title.equals(l.getTitle())){
                 found = true;
                 lp = l;
             }
