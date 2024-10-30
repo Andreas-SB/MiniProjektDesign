@@ -12,16 +12,16 @@ public class Loan
 {
     // instance variables - replace the example below with your own
     private String loanNumber;
-    private LocalDate borrowDate;
-    private LocalDate period;
+    private String borrowDate;
+    private String period;
     private String state;
-    private LocalDate returnDate;
+    private String returnDate;
     
     
     /**
      * Constructor for objects of class Loan
      */
-    public Loan(String loanNumber, LocalDate borrowDate,LocalDate period,String state,LocalDate returnDate)
+    public Loan(String loanNumber, String borrowDate,String period,String state,String returnDate)
     {
         // initialise instance variables
         this.loanNumber = loanNumber;
@@ -31,5 +31,7 @@ public class Loan
         this.returnDate = returnDate;
         
     }
-
+    public String getLoanNumber(){
+        return loanNumber;
+    }
 }
