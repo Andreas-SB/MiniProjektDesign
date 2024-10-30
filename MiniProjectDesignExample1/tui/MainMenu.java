@@ -1,7 +1,5 @@
 package tui;
 import java.util.Scanner;
-import model.LP;
-import controller.LPController;
 
 /**
  * Write a description of class MainMenu here.
@@ -79,39 +77,6 @@ public class MainMenu {
         return choice;
     }
     
-    private void createLP(){
-        String barcode = inputLPBarcode();
-        String title = inputLPTitle();
-        String artist = inputLPArtist();
-        String publicationDate = inputLPPublicationDate();
-        LPController controller = new LPController();
-        LP lp = controller.createLP(barcode, title, artist, publicationDate);
-        System.out.println("LP lavet: " + lp.getTitle());
-    }
-    private String inputLPBarcode() {   
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast navnet på din ven:  ");
-        String barcode = keyboard.nextLine();
-        return barcode;
-    }
-    private String inputLPTitle() {   
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast navnet på din ven:  ");
-        String title = keyboard.nextLine();
-        return title;
-    }
-    private String inputLPArtist() {   
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast navnet på din ven:  ");
-        String artist = keyboard.nextLine();
-        return artist;
-    }
-    private String inputLPPublicationDate() {   
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast navnet på din ven:  ");
-        String publicationDate = keyboard.nextLine();
-        return publicationDate;
-    }
     private void createTestData(){
         //getInstance
         //create some Friends and LPs

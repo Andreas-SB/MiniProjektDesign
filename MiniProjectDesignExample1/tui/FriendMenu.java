@@ -33,6 +33,14 @@ public class FriendMenu
                     break;
                 case 2: 
                     System.out.println(" (2) Søg efter telefonnummer");
+                    Friend friend = findFriend();
+                     if (friend == null){
+                        System.out.println("Ven er ikke fundet");
+                    }
+                    else{
+                        System.out.println("Ven er fundet " + friend.getName());
+                    }
+                    
                     break;
                 case 0:
                     System.out.println(" (0) Tilbage");
@@ -62,6 +70,13 @@ public class FriendMenu
             keyboard.nextLine();
         }
         return keyboard.nextInt();
+    }
+    
+    private Friend findFriend() {
+        String phone= inputFriendPhone();
+        FriendController controller = new FriendController();      
+        Friend friend = controller.findFriend(phone);
+        return friend;
     }
     
     private void createFriend(){

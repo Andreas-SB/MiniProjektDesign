@@ -47,4 +47,18 @@ public class FriendContainer
             
         return friend;
     }
+    public Friend findFriendByPhone(String phone){
+        Friend friend = null;
+        boolean found = false;
+        Iterator<Friend> iterator = listFriends.iterator();
+        while(iterator.hasNext()&& !found){
+            Friend f = iterator.next();
+            if(phone.equals(f.getPhone())){
+                found = true;
+                friend = f;
+            }
+        
+        }
+        return friend;
+    }
 }

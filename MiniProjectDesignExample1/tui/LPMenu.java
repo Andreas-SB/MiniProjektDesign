@@ -1,6 +1,7 @@
 package tui;
 import java.util.Scanner;
-
+import model.LP;
+import controller.LPController;
 
 public class LPMenu
 {
@@ -26,6 +27,7 @@ public class LPMenu
             switch (choice) {
                 case 1:
                     System.out.println(" (1) Opret LP");
+                    createLP();
                     break;
                 case 2: 
                     System.out.println(" (2) Opret LP kopi");
@@ -64,5 +66,38 @@ public class LPMenu
         return keyboard.nextInt();
     }
 
+    private void createLP(){
+        String barcode = inputLPBarcode();
+        String title = inputLPTitle();
+        String artist = inputLPArtist();
+        String publicationDate = inputLPPublicationDate();
+        LPController controller = new LPController();
+        LP lp = controller.createLP(barcode, title, artist, publicationDate);
+        System.out.println("LP lavet: " + lp.getTitle());
+    }
+    private String inputLPBarcode() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast stregekode på LP:  ");
+        String barcode = keyboard.nextLine();
+        return barcode;
+    }
+    private String inputLPTitle() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast Title på LP:  ");
+        String title = keyboard.nextLine();
+        return title;
+    }
+    private String inputLPArtist() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast Kunstner på LP:  ");
+        String artist = keyboard.nextLine();
+        return artist;
+    }
+    private String inputLPPublicationDate() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast Udgivelsesdato på LP:  ");
+        String publicationDate = keyboard.nextLine();
+        return publicationDate;
+    }
 }
 
