@@ -206,7 +206,7 @@ public class LoanMenu {
      */
     private String inputLPCopySerialNumber() {   
         Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast serienummer på LP:  ");
+        System.out.println(" Indtast serienummer på LP kopi:  ");
         return keyboard.nextLine();
     }
 
