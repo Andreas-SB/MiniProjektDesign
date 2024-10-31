@@ -1,48 +1,80 @@
 package model;
 
-
 /**
- * Write a description of class Friend here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Friend repræsenterer en ven med tilhørende oplysninger som navn,
+ * adresse, postnummer, by og telefonnummer.
+ * 
+ * @author Gruppe 2 
+ * @version 0.1.0
  */
-public class Friend
-{
-    // instance variables - replace the example below with your own
-    private String name;
-    private String address;
-    private String postalCode;
-    private String city;
-    private String phone;
+public class Friend {
+    // Instansvariabler
+    private String name;        // Vennens navn
+    private String address;     // Vennens adresse
+    private String postalCode;  // Vennens postnummer
+    private String city;        // Vennens by
+    private String phone;       // Vennens telefonnummer
 
     /**
-     * Constructor for objects of class Friend
+     * Konstruktør for objekter af klassen Friend.
+     * Initialiserer instansvariablerne med de angivne værdier.
+     * 
+     * @param name Vennens navn.
+     * @param address Vennens adresse.
+     * @param postalCode Vennens postnummer.
+     * @param city Vennens by.
+     * @param phone Vennens telefonnummer.
      */
-    public Friend(String name,String address,String postalCode,String city,String phone)
-    {
-        // initialise instance variables
+    public Friend(String name, String address, String postalCode, String city, String phone) {
         this.name = name;
         this.address = address;
         this.postalCode = postalCode;
         this.city = city;
         this.phone = phone;
     }
-    
-    public String getName(){
+
+    /**
+     * Henter vennens navn.
+     * 
+     * @return Vennens navn.
+     */
+    public String getName() {
         return name;
     }
-    public String getAddress(){
+
+    /**
+     * Henter vennens adresse.
+     * 
+     * @return Vennens adresse.
+     */
+    public String getAddress() {
         return address;
     }
-    public String getPostalCode(){
+
+    /**
+     * Henter vennens postnummer.
+     * 
+     * @return Vennens postnummer.
+     */
+    public String getPostalCode() {
         return postalCode;
     }
-    public String getCity(){
+
+    /**
+     * Henter vennens by.
+     * 
+     * @return Vennens by.
+     */
+    public String getCity() {
         return city;
     }
-    public String getPhone(){
+
+    /**
+     * Henter vennens telefonnummer.
+     * 
+     * @return Vennens telefonnummer.
+     */
+    public String getPhone() {
         return phone;
     }
-
 }

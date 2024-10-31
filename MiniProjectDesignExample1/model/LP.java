@@ -1,52 +1,90 @@
 package model;
 import java.util.ArrayList;
 
-
 /**
- * Write a description of class LP here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * LP repræsenterer en vinylplade med tilknyttede kopier.
+ * Klassen indeholder oplysninger som stregkode, titel, kunstner og
+ * udgivelsesdato for LP'en samt en liste over dens kopier.
+ * 
+ * @author Gruppe 2 
+ * @version 0.1.0
  */
-public class LP
-{
-    // instance variables - replace the example below with your own
-    private String barcode;
-    private String title;
-    private String artist;
-    private String publicationDate;
-    private ArrayList<LPCopy> listCopy;
+public class LP {
+    // Instansvariabler
+    private String barcode; // Stregkode for LP'en
+    private String title; // Titel på LP'en
+    private String artist; // Kunstner af LP'en
+    private String publicationDate; // Udgivelsesdato for LP'en
+    private ArrayList<LPCopy> listCopy; // Liste over kopier af LP'en
 
     /**
-     * Constructor for objects of class LP
+     * Konstruktør for objekter af klassen LP.
+     * 
+     * @param barcode Stregkode for LP'en
+     * @param title Titel på LP'en
+     * @param artist Kunstner af LP'en
+     * @param publicationDate Udgivelsesdato for LP'en
      */
-    public LP(String barcode, String title, String artist, String publicationDate)
-    {
-        // initialise instance variables
+    public LP(String barcode, String title, String artist, String publicationDate) {
+        // Initialiserer instansvariablerne
         this.barcode = barcode;
         this.title = title;
         this.artist = artist;
         this.publicationDate = publicationDate;
-        this.listCopy = new ArrayList<>();
+        this.listCopy = new ArrayList<>(); // Initialiserer listen over kopier
     }
-    public String getBarcode(){
+
+    /**
+     * Henter stregkoden for LP'en.
+     * 
+     * @return Stregkode som en String.
+     */
+    public String getBarcode() {
         return barcode;
     }
-    public String getTitle(){
+
+    /**
+     * Henter titlen på LP'en.
+     * 
+     * @return Titel som en String.
+     */
+    public String getTitle() {
         return title;
     }
-    public String getArtist(){
+
+    /**
+     * Henter kunstneren af LP'en.
+     * 
+     * @return Kunstner som en String.
+     */
+    public String getArtist() {
         return artist;
     }
-    public String getPublicationDate(){
+
+    /**
+     * Henter udgivelsesdatoen for LP'en.
+     * 
+     * @return Udgivelsesdato som en String.
+     */
+    public String getPublicationDate() {
         return publicationDate;
     }
-    
+
+    /**
+     * Henter listen over kopier af LP'en.
+     * 
+     * @return Liste over LPCopy objekter.
+     */
     public ArrayList<LPCopy> getListCopy() {
         return listCopy;
     }
-    public void addLPCopy(LPCopy lc){
+
+    /**
+     * Tilføjer en LPCopy til listen over kopier.
+     * 
+     * @param lc LPCopy objektet der skal tilføjes.
+     */
+    public void addLPCopy(LPCopy lc) {
         listCopy.add(lc);
     }
-    
 }

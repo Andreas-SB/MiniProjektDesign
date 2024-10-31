@@ -4,13 +4,21 @@ import model.LP;
 import model.LPCopy;
 import controller.LPController;
 
-
+/**
+ * LPMenu-klassen repræsenterer menuen til håndtering af LP'er og deres kopier. 
+ * Den giver brugeren mulighed for at oprette LP'er, oprette LP-kopier og søge efter 
+ * eksisterende LP'er og LP-kopier.
+ *
+ * Forfatter: Gruppe 2 
+ * Version: 0.1.0
+ */
 public class LPMenu
 {
     // instance variables - replace the example below with your own
 
     /**
-     * Constructor for objects of class FriendMenu
+     * Konstruktør for LPMenu-objektet.
+     * Initialiserer instansvariablerne, hvis det er nødvendigt.
      */
     public LPMenu()
     {
@@ -18,10 +26,17 @@ public class LPMenu
 
     }
 
+    /**
+     * Starter LP-menuen.
+     */
     public void start() {
         LPMenu();
     }
 
+    /**
+     * Viser LP-menuen og håndterer brugerens valg.
+     * Kører indtil brugeren vælger at gå tilbage.
+     */
     private void LPMenu() {
         boolean running = true;
         while (running) {
@@ -38,7 +53,7 @@ public class LPMenu
                 case 3: 
                     System.out.println(" (3) Søg LP");
                     LP lp = findLP();
-                     if (lp == null){
+                    if (lp == null){
                         System.out.println("LP er ikke fundet");
                     }
                     else{
@@ -60,6 +75,11 @@ public class LPMenu
         }
     }
 
+    /**
+     * Viser LP-menuens valgmuligheder og læser brugerens valg.
+     *
+     * @return int - Brugerens valg som et heltal.
+     */
     private int writeLPMenu() {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("****** LP menu  ******");
@@ -72,13 +92,22 @@ public class LPMenu
         int choice = getIntegerFromUser(keyboard);
         return choice;
     }
-    
+
+    /**
+     * Finder en LP baseret på titel.
+     *
+     * @return LP - LP'en, hvis fundet; ellers null.
+     */
     private LP findLP() {
         String title = inputLPTitle();
         LPController controller = new LPController();      
         LP lp = controller.findLP(title);
         return lp;
     }
+
+    /**
+     * Finder en LP-kopi baseret på serienummer.
+     */
     private void findLPCopy() {
         String serialNumber = inputLPCopySerialNumber();
         LPController controller = new LPController();      
@@ -90,7 +119,13 @@ public class LPMenu
             System.out.println("LP kopi ikke fundet");
         }
     }
-    
+
+    /**
+     * Metode til at få et heltal fra brugeren.
+     *
+     * @param keyboard Scanner-objektet til indlæsning af brugerinput.
+     * @return int - Brugerens input som et heltal.
+     */
     private int getIntegerFromUser(Scanner keyboard) {
         while (!keyboard.hasNextInt()) {
             System.out.println("Input skal være et tal - prøv igen");
@@ -99,6 +134,9 @@ public class LPMenu
         return keyboard.nextInt();
     }
 
+    /**
+     * Opretter en ny LP med brugerens input.
+     */
     private void createLP(){
         String barcode = inputLPBarcode();
         String title = inputLPTitle();
@@ -108,31 +146,60 @@ public class LPMenu
         LP lp = controller.createLP(barcode, title, artist, publicationDate);
         System.out.println("LP lavet: " + lp.getTitle());
     }
+
+    /**
+     * Indlæser stregekoden på en LP fra brugeren.
+     *
+     * @return String - Stregekoden på LP'en.
+     */
     private String inputLPBarcode() {   
         Scanner keyboard = new Scanner(System.in);
         System.out.println(" Indtast stregekode på LP:  ");
         String barcode = keyboard.nextLine();
         return barcode;
     }
+
+    /**
+     * Indlæser titlen på en LP fra brugeren.
+     *
+     * @return String - Titlen på LP'en.
+     */
     private String inputLPTitle() {   
         Scanner keyboard = new Scanner(System.in);
         System.out.println(" Indtast Title på LP:  ");
         String title = keyboard.nextLine();
         return title;
     }
+
+    /**
+     * Indlæser kunstnerens navn fra brugeren.
+     *
+     * @return String - Kunstnerens navn.
+     */
     private String inputLPArtist() {   
         Scanner keyboard = new Scanner(System.in);
         System.out.println(" Indtast Kunstner på LP:  ");
         String artist = keyboard.nextLine();
         return artist;
     }
+
+    /**
+     * Indlæser udgivelsesdatoen på en LP fra brugeren.
+     *
+     * @return String - Udgivelsesdatoen.
+     */
     private String inputLPPublicationDate() {   
         Scanner keyboard = new Scanner(System.in);
         System.out.println(" Indtast Udgivelsesdato på LP:  ");
         String publicationDate = keyboard.nextLine();
         return publicationDate;
     }
-    
+
+    /**
+     * Opretter en kopi af en LP med brugerens input.
+     *
+     * @return LP - Den LP, som kopien tilhører.
+     */
     private LP createLPCopy(){
         String serialNumber = inputLPCopySerialNumber();
         String purchaseDate = inputLPCopyPurchaseDate();
@@ -152,31 +219,60 @@ public class LPMenu
             return lp;
         }
     }
+
+    /**
+     * Indlæser serienummeret på en LP-kopi fra brugeren.
+     *
+     * @return String - Serienummeret på kopien.
+     */
     private String inputLPCopySerialNumber() {   
         Scanner keyboard = new Scanner(System.in);
         System.out.println(" Indtast serienummer på LP:  ");
         String serialNumber = keyboard.nextLine();
         return serialNumber;
     }
+
+    /**
+     * Indlæser indkøbsdatoen på en LP-kopi fra brugeren.
+     *
+     * @return String - Indkøbsdatoen.
+     */
     private String inputLPCopyPurchaseDate() {   
         Scanner keyboard = new Scanner(System.in);
         System.out.println(" Indtast indkøbsdato på LP:  ");
         String purchaseDate = keyboard.nextLine();
         return purchaseDate;
     }
+
+    /**
+     * Indlæser indkøbsprisen på en LP-kopi fra brugeren.
+     *
+     * @return String - Indkøbsprisen.
+     */
     private String inputLPCopyPurchasePrice() {   
         Scanner keyboard = new Scanner(System.in);
         System.out.println(" Indtast indkøbspris på LP:  ");
         String purchasePrice = keyboard.nextLine();
         return purchasePrice;
     }
+
+    /**
+     * Indlæser tilstanden på en LP-kopi fra brugeren.
+     *
+     * @return String - Tilstanden.
+     */
     private String inputLPCopyCondition() {   
         Scanner keyboard = new Scanner(System.in);
         System.out.println(" Indtast tilstand på LP:  ");
         String condition = keyboard.nextLine();
         return condition;
     }
-    
+
+    /**
+     * Beskriver oplysningerne om en LP.
+     *
+     * @param lp LP-objektet, der skal beskrives.
+     */
     public void describeLP(LP lp){
         System.out.println("LP er fundet");
         System.out.println("Stregekoden til lp'en er: " + lp.getBarcode());
@@ -184,6 +280,12 @@ public class LPMenu
         System.out.println("kunstner på lp'en er: " + lp.getArtist());
         System.out.println("Udgivelsesdato på lp'en er: " + lp.getPublicationDate());
     }
+
+    /**
+     * Beskriver oplysningerne om en LP-kopi.
+     *
+     * @param lpcopy LPCopy-objektet, der skal beskrives.
+     */
     public void describeLPCopy(LPCopy lpcopy){
         System.out.println("Serienummer på lp kopi'en er: " + lpcopy.getSerialNumber());
         System.out.println("Indkøbsdato på lp kopi'en er: " + lpcopy.getPurchaseDate());

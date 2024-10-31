@@ -1,33 +1,49 @@
 package controller;
 import model.Loan;
 import model.LoanContainer;
-import java.time.LocalDate;
-
 
 /**
- * Write a description of class LoanController here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * LoanController håndterer operationer relateret til lån i systemet.
+ * Denne klasse giver funktioner til at finde og oprette lån.
+ * 
+ * @author Gruppe 2 
+ * @version 0.1.0
  */
-public class LoanController
-{
-    // instance variables - replace the example below with your own
+public class LoanController {
+    // Instansvariabler
     private Loan foundLoan;
+
     /**
-     * Constructor for objects of class LoanController
+     * Konstruktør for objekter af klassen LoanController.
+     * Initialiserer instansvariablerne.
      */
-    public LoanController()
-    {
-        // initialise instance variables
+    public LoanController() {
+        // Initialiserer instansvariabler
     }
 
-    public Loan findLoan(String loanNumber){
+    /**
+     * Finder et lån baseret på lånenummeret.
+     * 
+     * @param loanNumber Lånenummeret for det lån der skal findes.
+     * @return Det fundne Loan-objekt eller null hvis ikke fundet.
+     */
+    public Loan findLoan(String loanNumber) {
         LoanContainer instance = LoanContainer.getUniqueInstance();
         foundLoan = instance.findLoanByLoanNumber(loanNumber);
         return foundLoan;
     }
-    public Loan createLoan(String loanNumber, String borrowDate, String period, String state, String returnDate){
+
+    /**
+     * Opretter et nyt lån med de angivne oplysninger.
+     * 
+     * @param loanNumber Lånenummeret for det nye lån.
+     * @param borrowDate Lånedatoen for lånet.
+     * @param period Låneperioden for lånet.
+     * @param state Status for lånet.
+     * @param returnDate Retur datoen for lånet.
+     * @return Det oprettede Loan-objekt.
+     */
+    public Loan createLoan(String loanNumber, String borrowDate, String period, String state, String returnDate) {
         Loan lo = new Loan(loanNumber, borrowDate, period, state, returnDate);
         LoanContainer instance = LoanContainer.getUniqueInstance();
         instance.addLoan(lo);
