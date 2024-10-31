@@ -45,6 +45,10 @@ public class LPMenu
                         System.out.println("LP er fundet " + lp.getTitle());
                     }
                     break;
+                case 4:
+                    System.out.println(" (4) Søg LP kopi");
+                    findLPCopy();
+                    break;
                 case 0:
                     System.out.println(" (0) Tilbage");
                     running = false;
@@ -62,6 +66,7 @@ public class LPMenu
         System.out.println(" (1) Opret LP");
         System.out.println(" (2) Opret LP kopi");
         System.out.println(" (3) Søg LP");
+        System.out.println(" (4) Søg LP kopi");
         System.out.println(" (0) Tilbage");
         System.out.print("\n Vælg:");
         int choice = getIntegerFromUser(keyboard);
@@ -81,6 +86,18 @@ public class LPMenu
             keyboard.nextLine();
         }
         return keyboard.nextInt();
+    }
+    
+    private void findLPCopy() {
+        String serialNumber = inputLPCopySerialNumber();
+        LPController controller = new LPController();      
+        String[] result = controller.findLPCopyAndTitle(serialNumber);
+        if (result != null) {
+            System.out.println("LP kopi fundet med serienummer: " + result[0]);
+            System.out.println("Tilhører LP'en: " + result[1]);
+        } else {
+            System.out.println("LP kopi ikke fundet");
+        }
     }
 
     private void createLP(){
@@ -124,13 +141,18 @@ public class LPMenu
         String purchasePrice = inputLPCopyPurchasePrice();
         String condition = inputLPCopyCondition();
         String title = inputLPTitle();
-        
-        //LP lp = findLP(title);
-        //LPController controller = new LPController();
-        //LP lp = controller.createLP(serialNumber, purchaseDate, purchasePrice, condition);
-        
-        //System.out.println("LP lavet: " + lp.getTitle());
-        return null;
+
+        LPController controller = new LPController();
+        LP lp = controller.findLP(title);
+        if (lp == null) {
+            System.out.println("LP findes ikke");
+            return null;
+        } else {
+            LPCopy lpCopy = controller.createLPCopy(serialNumber, purchaseDate, purchasePrice, condition);
+            lp.addLPCopy(lpCopy);
+            System.out.println("LP kopi lavet for: " + lp.getTitle());
+            return lp;
+        }
     }
     private String inputLPCopySerialNumber() {   
         Scanner keyboard = new Scanner(System.in);

@@ -67,5 +67,14 @@ public class LPContainer
             
         return lpcopy;
     }
+    public LP findLPForCopy(LPCopy copy) {
+    for (LP lp : listLPS) {
+        ArrayList<LPCopy> copies = lp.getListCopy();
+        if (copies.contains(copy)) {
+            return lp;
+        }
+    }
+    return null;
+    }
     
 }

@@ -32,6 +32,9 @@ public class LP
     public String getTitle(){
         return title;
     }
+    public ArrayList<LPCopy> getListCopy() {
+        return listCopy;
+    }
     public void addLPCopy(LPCopy lc){
         listCopy.add(lc);
     }

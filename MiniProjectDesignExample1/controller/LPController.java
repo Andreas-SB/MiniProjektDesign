@@ -12,7 +12,7 @@ import model.LPContainer;
 public class LPController
 {
     // instance variables - replace the example below with your own
-        private LP foundLP;
+    private LP foundLP;
         
     public LPController()
     {
@@ -35,5 +35,20 @@ public class LPController
         LPContainer instance = LPContainer.getUniqueInstance();
         foundLP = instance.findLPByTitle(title);
         return foundLP;
+    }
+    public LPCopy findLPCopy(String serialNumber) {
+        LPContainer instance = LPContainer.getUniqueInstance();
+        return instance.findLPCopyByBarcode(serialNumber);
+    }
+    public String[] findLPCopyAndTitle(String serialNumber) {
+        LPContainer instance = LPContainer.getUniqueInstance();
+        LPCopy copy = instance.findLPCopyByBarcode(serialNumber);
+        if (copy != null) {
+            LP lp = instance.findLPForCopy(copy);
+            if (lp != null) {
+                return new String[]{copy.getSerialNumber(), lp.getTitle()};
+            }
+        }
+        return null;
     }
 }

@@ -1,8 +1,11 @@
 package tui;
 import java.util.Scanner;
 import model.Loan;
+import model.Friend;
+import model.LPCopy;
 import controller.LoanController;
-
+import controller.FriendController;
+import controller.LPController;
 
 /**
  * Write a description of class LoanMenu here.
@@ -12,14 +15,18 @@ import controller.LoanController;
  */
 public class LoanMenu {
     // instance variables
-    
+    private FriendController friendController;
+    private LPController lpController;
+    private LoanController loanController;
 
     /**
      * Constructor for objects of class LoanMenu
      */
     public LoanMenu() {
         // initialise instance variables
-        
+        friendController = new FriendController();
+        lpController = new LPController();
+        loanController = new LoanController();
        
     }
 
@@ -84,14 +91,31 @@ public class LoanMenu {
     
     
     private void createLoan(){
+        System.out.println("Find LP kopi:");
+        String serialNumber = inputLPCopySerialNumber();
+        LPCopy lpCopy = lpController.findLPCopy(serialNumber);
+        if (lpCopy == null) {
+            System.out.println("LP kopi ikke fundet");
+            return;
+        }
+        System.out.println("Find ven:");
+        String phone = inputFriendPhone();
+        Friend friend = friendController.findFriend(phone);
+        if (friend == null) {
+            System.out.println("Ven ikke fundet");
+            return;
+        }
+        
+
         String loanNumber = inputLoanNumber();
         String borrowDate = inputBorrowDate();
         String period = inputPeriod();
         String state = inputState();
         String returnDate = inputReturnDate();
-        LoanController controller = new LoanController();
-        Loan loan = controller.createLoan(loanNumber, borrowDate, period,state, returnDate);
-        System.out.println("Lån er lavet: " + loan.getLoanNumber());
+        
+        Loan loan = loanController.createLoan(loanNumber, borrowDate, period, state, returnDate);
+        System.out.println("Lån oprettet til " + friend.getName() + " for LP kopi: " + serialNumber);
+        
     }
     private String inputLoanNumber() {   
         Scanner keyboard = new Scanner(System.in);
@@ -122,6 +146,16 @@ public class LoanMenu {
         System.out.println(" Indtast retunerdato på Lån:  ");
         String returnDate = keyboard.nextLine();
         return returnDate;
+    }
+    private String inputLPCopySerialNumber() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast serienummer på LP:  ");
+        return keyboard.nextLine();
+    }
+    private String inputFriendPhone() {   
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(" Indtast telefonnummer på ven:  ");
+        return keyboard.nextLine();
     }
 }
 
