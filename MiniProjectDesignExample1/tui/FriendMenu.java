@@ -38,7 +38,7 @@ public class FriendMenu
                         System.out.println("Ven er ikke fundet");
                     }
                     else{
-                        System.out.println("Ven er fundet " + friend.getName());
+                        describeFriend(friend);
                     }
                     
                     break;
@@ -118,6 +118,15 @@ public class FriendMenu
         System.out.println(" Indtast din vens telefonnummer:  ");
         String phone = keyboard.nextLine();
         return phone;
+    }
+    
+    public void describeFriend(Friend friend){
+        System.out.println("Ven er fundet");
+        System.out.println("Navn på ven er: " + friend.getName());
+        System.out.println("Addressen på ven er: " + friend.getAddress());
+        System.out.println("Postnummer på ven er: " + friend.getPostalCode());
+        System.out.println("Byen ven bor i er: " + friend.getCity());
+        System.out.println("Vens telefonnummer er: " + friend.getPhone());
     }
     
 }

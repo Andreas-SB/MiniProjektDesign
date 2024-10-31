@@ -42,7 +42,7 @@ public class LPMenu
                         System.out.println("LP er ikke fundet");
                     }
                     else{
-                        System.out.println("LP er fundet " + lp.getTitle());
+                        describeLP(lp);
                     }
                     break;
                 case 4:
@@ -79,15 +79,6 @@ public class LPMenu
         LP lp = controller.findLP(title);
         return lp;
     }
-
-    private int getIntegerFromUser(Scanner keyboard) {
-        while (!keyboard.hasNextInt()) {
-            System.out.println("Input skal være et tal - prøv igen");
-            keyboard.nextLine();
-        }
-        return keyboard.nextInt();
-    }
-    
     private void findLPCopy() {
         String serialNumber = inputLPCopySerialNumber();
         LPController controller = new LPController();      
@@ -98,6 +89,14 @@ public class LPMenu
         } else {
             System.out.println("LP kopi ikke fundet");
         }
+    }
+    
+    private int getIntegerFromUser(Scanner keyboard) {
+        while (!keyboard.hasNextInt()) {
+            System.out.println("Input skal være et tal - prøv igen");
+            keyboard.nextLine();
+        }
+        return keyboard.nextInt();
     }
 
     private void createLP(){
@@ -133,7 +132,6 @@ public class LPMenu
         String publicationDate = keyboard.nextLine();
         return publicationDate;
     }
-    
     
     private LP createLPCopy(){
         String serialNumber = inputLPCopySerialNumber();
@@ -177,6 +175,20 @@ public class LPMenu
         System.out.println(" Indtast tilstand på LP:  ");
         String condition = keyboard.nextLine();
         return condition;
+    }
+    
+    public void describeLP(LP lp){
+        System.out.println("LP er fundet");
+        System.out.println("Stregekoden til lp'en er: " + lp.getBarcode());
+        System.out.println("Titlen på lp'en er: " + lp.getTitle());
+        System.out.println("kunstner på lp'en er: " + lp.getArtist());
+        System.out.println("Udgivelsesdato på lp'en er: " + lp.getPublicationDate());
+    }
+    public void describeLPCopy(LPCopy lpcopy){
+        System.out.println("Serienummer på lp kopi'en er: " + lpcopy.getSerialNumber());
+        System.out.println("Indkøbsdato på lp kopi'en er: " + lpcopy.getPurchaseDate());
+        System.out.println("Indkøbspris på lp kopi'en er: " + lpcopy.getPurchasePrice());
+        System.out.println("Tilstand på lp kopi'en er: " + lpcopy.getCondition());
     }
 }
 

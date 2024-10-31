@@ -44,13 +44,5 @@ public class Friend
     public String getPhone(){
         return phone;
     }
-    
-    public void describeFriend(){
-        System.out.println("Navn på ven er: " + name);
-        System.out.println("Addressen på ven er: " + address);
-        System.out.println("Postnummer på ven er: " + postalCode);
-        System.out.println("Byen ven bor i er: " + city);
-        System.out.println("Vens telefonnummer er: " + phone);
-    }
 
 }

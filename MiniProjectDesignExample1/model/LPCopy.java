@@ -39,10 +39,4 @@ public class LPCopy
         return condition;
     }
     
-    public void describeLPCopy(){
-        System.out.println("Serienummer på lp kopi'en er: " + serialNumber);
-        System.out.println("Indkøbsdato på lp kopi'en er: " + purchaseDate);
-        System.out.println("Indkøbspris på lp kopi'en er: " + purchasePrice);
-        System.out.println("Tilstand på lp kopi'en er: " + condition);
-    }
 }
