@@ -29,9 +29,26 @@ public class LP
         this.publicationDate = publicationDate;
         this.listCopy = new ArrayList<>();
     }
+    public String getBarcode(){
+        return barcode;
+    }
     public String getTitle(){
         return title;
     }
+    public String getArtist(){
+        return artist;
+    }
+    public String getPublicationDate(){
+        return publicationDate;
+    }
+    
+    public void describeLP(){
+        System.out.println("Stregekoden til lp'en er: " + barcode);
+        System.out.println("Titlen på lp'en er: " + title);
+        System.out.println("kunstner på lp'en er: " + artist);
+        System.out.println("Udgivelsesdato på lp'en er: " + publicationDate);
+    }
+    
     public ArrayList<LPCopy> getListCopy() {
         return listCopy;
     }

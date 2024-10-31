@@ -91,6 +91,7 @@ public class LoanMenu {
     
     
     private void createLoan(){
+        System.out.println("");
         System.out.println("Find LP kopi:");
         String serialNumber = inputLPCopySerialNumber();
         LPCopy lpCopy = lpController.findLPCopy(serialNumber);

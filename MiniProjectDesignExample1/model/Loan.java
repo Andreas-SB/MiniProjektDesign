@@ -34,4 +34,24 @@ public class Loan
     public String getLoanNumber(){
         return loanNumber;
     }
+    public String getBorrowDate(){
+        return borrowDate;
+    }
+    public String getPeriod(){
+        return period;
+    }
+    public String getState(){
+        return state;
+    }
+    public String getReturnDate(){
+        return returnDate;
+    }
+    
+    public void describeLoan(){
+        System.out.println("Lånenummer for lån er: " + loanNumber);
+        System.out.println("Lånedato for lån er: " + borrowDate);
+        System.out.println("Låneperiode for lån er: " + period);
+        System.out.println("Stadie på lån er: " + state);
+        System.out.println("Retunerdato for lån er: " + returnDate);
+    }
 }

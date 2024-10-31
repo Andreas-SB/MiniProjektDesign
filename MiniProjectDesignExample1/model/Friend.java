@@ -28,11 +28,29 @@ public class Friend
         this.city = city;
         this.phone = phone;
     }
+    
     public String getName(){
         return name;
     }
+    public String getAddress(){
+        return address;
+    }
+    public String getPostalCode(){
+        return postalCode;
+    }
+    public String getCity(){
+        return city;
+    }
     public String getPhone(){
         return phone;
+    }
+    
+    public void describeFriend(){
+        System.out.println("Navn på ven er: " + name);
+        System.out.println("Addressen på ven er: " + address);
+        System.out.println("Postnummer på ven er: " + postalCode);
+        System.out.println("Byen ven bor i er: " + city);
+        System.out.println("Vens telefonnummer er: " + phone);
     }
 
 }
