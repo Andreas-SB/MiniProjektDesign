@@ -54,14 +54,4 @@ public class Loan {
         return returnDate;
     }
 
-    /**
-     * Beskriver lånet ved at udskrive dets oplysninger.
-     */
-    public void describeLoan() {
-        System.out.println("Lånenummer for lån er: " + loanNumber);
-        System.out.println("Lånedato for lån er: " + borrowDate);
-        System.out.println("Låneperiode for lån er: " + period);
-        System.out.println("Stadie på lån er: " + state);
-        System.out.println("Retunerdato for lån er: " + returnDate);
-    }
 }

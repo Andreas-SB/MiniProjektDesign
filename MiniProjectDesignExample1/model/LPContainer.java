@@ -20,7 +20,7 @@ public class LPContainer {
      * Konstruktør for objekter af klassen LPContainer.
      * Initialiserer listerne til at gemme LP og LPCopy objekter.
      */
-    private LPContainer() {
+    public LPContainer() {
         listLPS = new ArrayList<>();
         listLPCopys = new ArrayList<>();
     }
@@ -102,6 +102,7 @@ public class LPContainer {
      * @return Det fundne LP objekt eller null hvis ikke fundet.
      */
     public LP findLPForCopy(LPCopy copy) {
+        
         for (LP lp : listLPS) {
             ArrayList<LPCopy> copies = lp.getListCopy();
             if (copies.contains(copy)) {

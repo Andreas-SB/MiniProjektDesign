@@ -13,6 +13,7 @@ import model.LPContainer;
 public class LPController {
     // Instansvariabler
     private LP foundLP;
+    private LPContainer uniqueContainer;
 
     /**
      * Konstruktør for objekter af klassen LPController.
@@ -20,6 +21,7 @@ public class LPController {
      */
     public LPController() {
         // Initialiserer instansvariabler
+        uniqueContainer = LPContainer.getUniqueInstance();
     }
 
     /**
@@ -33,8 +35,7 @@ public class LPController {
      */
     public LP createLP(String barcode, String title, String artist, String publicationDate) {
         LP l = new LP(barcode, title, artist, publicationDate);
-        LPContainer instance = LPContainer.getUniqueInstance();
-        instance.addLP(l);
+        uniqueContainer.addLP(l);
         return l;
     }
 
@@ -49,8 +50,7 @@ public class LPController {
      */
     public LPCopy createLPCopy(String serialNumber, String purchaseDate, String purchasePrice, String condition) {
         LPCopy lc = new LPCopy(serialNumber, purchaseDate, purchasePrice, condition);
-        LPContainer instance = LPContainer.getUniqueInstance();
-        instance.addLPCopy(lc);
+        uniqueContainer.addLPCopy(lc);
         return lc;
     }
 
@@ -63,6 +63,11 @@ public class LPController {
     public LP findLP(String title) {
         LPContainer instance = LPContainer.getUniqueInstance();
         foundLP = instance.findLPByTitle(title);
+        return foundLP;
+    }
+    
+    public LP findLP(LPCopy lpCopy) {
+        foundLP = uniqueContainer.findLPForCopy(lpCopy);
         return foundLP;
     }
 
@@ -84,15 +89,8 @@ public class LPController {
      * @return Et array der indeholder LP-kopiens serienummer og LP'ens titel,
      *         eller null hvis ikke fundet.
      */
-    public String[] findLPCopyAndTitle(String serialNumber) {
-        LPContainer instance = LPContainer.getUniqueInstance();
-        LPCopy copy = instance.findLPCopyByBarcode(serialNumber);
-        if (copy != null) {
-            LP lp = instance.findLPForCopy(copy);
-            if (lp != null) {
-                return new String[]{copy.getSerialNumber(), lp.getTitle()};
-            }
-        }
-        return null;
+    public LPCopy findLPCopyAndTitle(String serialNumber) {
+        LPCopy copy = uniqueContainer.findLPCopyByBarcode(serialNumber);
+        return copy;
     }
 }

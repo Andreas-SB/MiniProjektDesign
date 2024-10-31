@@ -2,6 +2,7 @@ package tui;
 import java.util.Scanner;
 import model.LP;
 import model.LPCopy;
+import model.LPContainer;
 import controller.LPController;
 
 /**
@@ -15,7 +16,7 @@ import controller.LPController;
 public class LPMenu
 {
     // instance variables - replace the example below with your own
-
+    LPController lpCl;
     /**
      * Konstruktør for LPMenu-objektet.
      * Initialiserer instansvariablerne, hvis det er nødvendigt.
@@ -23,7 +24,7 @@ public class LPMenu
     public LPMenu()
     {
         // initialise instance variables
-
+        lpCl = new LPController();
     }
 
     /**
@@ -110,16 +111,17 @@ public class LPMenu
      */
     private void findLPCopy() {
         String serialNumber = inputLPCopySerialNumber();
-        LPController controller = new LPController();      
-        String[] result = controller.findLPCopyAndTitle(serialNumber);
-        if (result != null) {
-            System.out.println("LP kopi fundet med serienummer: " + result[0]);
-            System.out.println("Tilhører LP'en: " + result[1]);
+        LPContainer lpContainer = new LPContainer();
+        LPCopy foundCopy = lpCl.findLPCopyAndTitle(serialNumber);
+        LP foundLP = lpCl.findLP(foundCopy);
+        if (foundCopy != null) {
+            System.out.println("LP kopi fundet med serienummer: " + foundCopy.getSerialNumber());
+            System.out.println("Tilhører LP'en: " + foundLP.getTitle());
         } else {
             System.out.println("LP kopi ikke fundet");
         }
     }
-
+    
     /**
      * Metode til at få et heltal fra brugeren.
      *
@@ -142,8 +144,7 @@ public class LPMenu
         String title = inputLPTitle();
         String artist = inputLPArtist();
         String publicationDate = inputLPPublicationDate();
-        LPController controller = new LPController();
-        LP lp = controller.createLP(barcode, title, artist, publicationDate);
+        LP lp = lpCl.createLP(barcode, title, artist, publicationDate);
         System.out.println("LP lavet: " + lp.getTitle());
     }
 
@@ -227,7 +228,7 @@ public class LPMenu
      */
     private String inputLPCopySerialNumber() {   
         Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast serienummer på LP:  ");
+        System.out.println(" Indtast serienummer på LP Kopi:  ");
         String serialNumber = keyboard.nextLine();
         return serialNumber;
     }
@@ -239,7 +240,7 @@ public class LPMenu
      */
     private String inputLPCopyPurchaseDate() {   
         Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast indkøbsdato på LP:  ");
+        System.out.println(" Indtast indkøbsdato på LP Kopi:  ");
         String purchaseDate = keyboard.nextLine();
         return purchaseDate;
     }
@@ -251,7 +252,7 @@ public class LPMenu
      */
     private String inputLPCopyPurchasePrice() {   
         Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast indkøbspris på LP:  ");
+        System.out.println(" Indtast indkøbspris på LP Kopi:  ");
         String purchasePrice = keyboard.nextLine();
         return purchasePrice;
     }
@@ -263,7 +264,7 @@ public class LPMenu
      */
     private String inputLPCopyCondition() {   
         Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast tilstand på LP:  ");
+        System.out.println(" Indtast tilstand på LP Kopi:  ");
         String condition = keyboard.nextLine();
         return condition;
     }

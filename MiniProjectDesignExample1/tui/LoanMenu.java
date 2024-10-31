@@ -54,7 +54,7 @@ public class LoanMenu {
                     if (loan == null) {
                         System.out.println("Lån er ikke fundet");
                     } else {
-                        System.out.println("Lån er fundet " + loan.getLoanNumber());
+                        describeLoan(loan);
                     }
                     break;
                 case 0:
@@ -219,5 +219,16 @@ public class LoanMenu {
         Scanner keyboard = new Scanner(System.in);
         System.out.println(" Indtast telefonnummer på ven:  ");
         return keyboard.nextLine();
+    }
+    
+    /**
+     * Beskriver lånet ved at udskrive dets oplysninger.
+     */
+    public void describeLoan(Loan loan) {
+        System.out.println("Lånenummer for lån er: " + loan.getLoanNumber());
+        System.out.println("Lånedato for lån er: " + loan.getBorrowDate());
+        System.out.println("Låneperiode for lån er: " + loan.getPeriod());
+        System.out.println("Stadie på lån er: " + loan.getState());
+        System.out.println("Retunerdato for lån er: " + loan.getReturnDate());
     }
 }
