@@ -9,8 +9,8 @@ import controller.FriendController;
  * mulighed for at oprette nye venner og søge efter eksisterende venner baseret på 
  * telefonnummer.
  *
- * Forfatter: Gruppe 2 
- * Version: 0.1.0
+ * @author Gruppe 2 
+ * @version 0.1.0
  */
 public class FriendMenu {
     // Instansvariabler

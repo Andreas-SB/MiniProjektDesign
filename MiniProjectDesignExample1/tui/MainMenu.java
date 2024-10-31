@@ -6,8 +6,8 @@ import java.util.Scanner;
  * MainMenu-klassen repræsenterer hovedmenuen for programmet og styrer navigationen til 
  * de forskellige under-menuer, såsom venne-menuen, LP-menuen og udlåns-menuen.
  *
- * Forfatter: Gruppe 2 
- * Version: 0.1.0
+ * @author Gruppe 2 
+ * @version 0.1.0
  */
 public class MainMenu {
     // Instansvariabler

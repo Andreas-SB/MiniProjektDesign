@@ -6,7 +6,7 @@ import model.FriendContainer;
  * FriendController håndterer operationer relateret til venner.
  * Denne klasse giver funktioner til at finde og oprette venner.
  * 
- * @author gruppe 2 
+ * @author Gruppe 2 
  * @version 0.1.0
  */
 public class FriendController {

@@ -9,8 +9,8 @@ import controller.LPController;
  * Den giver brugeren mulighed for at oprette LP'er, oprette LP-kopier og søge efter 
  * eksisterende LP'er og LP-kopier.
  *
- * Forfatter: Gruppe 2 
- * Version: 0.1.0
+ * @author Gruppe 2 
+ * @version 0.1.0
  */
 public class LPMenu
 {
