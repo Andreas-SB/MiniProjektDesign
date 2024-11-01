@@ -4,28 +4,30 @@ import model.FriendContainer;
 
 /**
  * FriendController håndterer operationer relateret til venner.
- * Denne klasse giver funktioner til at finde og oprette venner.
+ * Klassen indeholder metoder til at finde og oprette venne-objekter,
+ * som administreres af FriendContainer.
  * 
  * @author Gruppe 2 
  * @version 0.1.0
  */
 public class FriendController {
-    // Instansvariabler
+    // Instansvariabel
     private Friend foundFriend;
 
     /**
-     * Konstruktør for objekter af klassen FriendController.
-     * Initialiserer instansvariablerne.
+     * Konstruktør for FriendController-objektet.
+     * Initialiserer instansvariabler, hvis nødvendigt.
      */
     public FriendController() {
-        // Initialiserer instansvariabler
+        // Instansvariabler initialiseres, om nødvendigt
     }
 
     /**
-     * Finder en ven baseret på telefonnummer.
+     * Søger efter en ven baseret på telefonnummeret.
+     * Bruges til at slå en ven op i FriendContainer.
      * 
-     * @param phone Telefonnummeret på vennen der skal findes.
-     * @return Det fundne Friend-objekt eller null hvis ikke fundet.
+     * @param phone Telefonnummeret på vennen, der skal findes.
+     * @return Det fundne Friend-objekt, eller null hvis ingen ven blev fundet.
      */
     public Friend findFriend(String phone) {
         FriendContainer instance = FriendContainer.getUniqueInstance();
@@ -34,14 +36,14 @@ public class FriendController {
     }
 
     /**
-     * Opretter en ny ven med de angivne oplysninger.
+     * Opretter en ny ven og tilføjer denne til FriendContainer.
      * 
      * @param name Navnet på vennen.
      * @param address Adressen på vennen.
      * @param postalCode Postnummeret for vennens adresse.
      * @param city Byen hvor vennen bor.
      * @param phone Telefonnummeret til vennen.
-     * @return Det oprettede Friend-objekt.
+     * @return Det nyoprettede Friend-objekt.
      */
     public Friend createFriend(String name, String address, String postalCode, String city, String phone) {
         Friend f = new Friend(name, address, postalCode, city, phone);

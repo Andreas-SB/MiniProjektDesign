@@ -102,7 +102,6 @@ public class LPContainer {
      * @return Det fundne LP objekt eller null hvis ikke fundet.
      */
     public LP findLPForCopy(LPCopy copy) {
-        
         for (LP lp : listLPS) {
             ArrayList<LPCopy> copies = lp.getListCopy();
             if (copies.contains(copy)) {

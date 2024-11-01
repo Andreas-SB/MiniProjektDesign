@@ -22,10 +22,10 @@ public class LoanController {
     }
 
     /**
-     * Finder et lån baseret på lånenummeret.
+     * Finder et lån baseret på lånenummeret ved at søge i LoanContainer.
      * 
      * @param loanNumber Lånenummeret for det lån der skal findes.
-     * @return Det fundne Loan-objekt eller null hvis ikke fundet.
+     * @return Det fundne Loan-objekt eller null, hvis lånet ikke findes.
      */
     public Loan findLoan(String loanNumber) {
         LoanContainer instance = LoanContainer.getUniqueInstance();
@@ -34,7 +34,7 @@ public class LoanController {
     }
 
     /**
-     * Opretter et nyt lån med de angivne oplysninger.
+     * Opretter et nyt lån med de angivne oplysninger og tilføjer det til LoanContainer.
      * 
      * @param loanNumber Lånenummeret for det nye lån.
      * @param borrowDate Lånedatoen for lånet.

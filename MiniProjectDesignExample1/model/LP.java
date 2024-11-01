@@ -70,7 +70,12 @@ public class LP {
         return publicationDate;
     }
     
-    public ArrayList<LPCopy> getAllCopys(){
+    /**
+     * Henter alle kopier af LP'en.
+     * 
+     * @return Liste over LPCopy objekter.
+     */
+    public ArrayList<LPCopy> getAllCopys() {
         return listCopy;
     }
 

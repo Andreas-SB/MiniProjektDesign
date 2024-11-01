@@ -9,6 +9,7 @@ import controller.LPController;
 
 /**
  * LoanMenu håndterer brugerinteraktionen for lån af LP-kopier.
+ * Brugeren kan oprette et lån, søge efter et eksisterende lån og få vist lånedetaljer.
  *
  * @author Gruppe 2 
  * @version 0.1.0
@@ -20,10 +21,10 @@ public class LoanMenu {
     private LoanController loanController;
 
     /**
-     * Konstruktør for objekter af klassen LoanMenu
+     * Konstruktør for LoanMenu-objektet.
+     * Initialiserer controllerne til håndtering af venner, LP'er og lån.
      */
     public LoanMenu() {
-        // Initialiserer instansvariablerne
         friendController = new FriendController();
         lpController = new LPController();
         loanController = new LoanController();
@@ -31,6 +32,7 @@ public class LoanMenu {
 
     /**
      * Starter lånermenuen.
+     * Denne metode viser menuen og lader brugeren vælge mellem forskellige lånehandlinger.
      */
     public void start() {
         loanMenu();
@@ -38,6 +40,7 @@ public class LoanMenu {
 
     /**
      * Viser lånermenuen og håndterer brugerens valg.
+     * Brugeren kan oprette lån, søge lån eller afslutte menuen.
      */
     private void loanMenu() {
         boolean running = true;
@@ -68,9 +71,9 @@ public class LoanMenu {
     }
 
     /**
-     * Skriver lånermenuen og returnerer brugerens valg.
+     * Skriver lånermenuens valgmuligheder og returnerer brugerens valg.
      * 
-     * @return det valgte menupunkt.
+     * @return det valgte menupunkt som et heltal.
      */
     private int writeLoanMenu() {
         Scanner keyboard = new Scanner(System.in);
@@ -84,7 +87,7 @@ public class LoanMenu {
     }
 
     /**
-     * Henter et heltal fra brugeren.
+     * Henter et heltal fra brugeren og håndterer ikke-numerisk input.
      * 
      * @param keyboard Scanner til at læse brugerinput.
      * @return det indtastede heltal.
@@ -98,22 +101,20 @@ public class LoanMenu {
     }
 
     /**
-     * Finder et lån baseret på lånenummer.
+     * Finder et lån baseret på lånenummeret indtastet af brugeren.
      * 
-     * @return det fundne Loan-objekt eller null hvis ikke fundet.
+     * @return det fundne Loan-objekt, eller null hvis ikke fundet.
      */
     private Loan findLoan() {
         String loanNumber = inputLoanNumber();
-        LoanController controller = new LoanController();      
-        Loan loan = controller.findLoan(loanNumber);
+        Loan loan = loanController.findLoan(loanNumber);
         return loan;
     }
 
     /**
-     * Opretter et lån ved at hente oplysninger fra brugeren.
+     * Opretter et lån ved at hente oplysninger om LP-kopi og ven fra brugeren.
      */
     private void createLoan() {
-        System.out.println("");
         System.out.println("Find LP kopi:");
         String serialNumber = inputLPCopySerialNumber();
         LPCopy lpCopy = lpController.findLPCopy(serialNumber);
@@ -121,6 +122,7 @@ public class LoanMenu {
             System.out.println("LP kopi ikke fundet");
             return;
         }
+
         System.out.println("Find ven:");
         String phone = inputFriendPhone();
         Friend friend = friendController.findFriend(phone);
@@ -134,7 +136,7 @@ public class LoanMenu {
         String period = inputPeriod();
         String state = inputState();
         String returnDate = inputReturnDate();
-        
+
         Loan loan = loanController.createLoan(loanNumber, borrowDate, period, state, returnDate);
         System.out.println("Lån oprettet til " + friend.getName() + " for LP kopi: " + serialNumber);
     }
@@ -142,93 +144,90 @@ public class LoanMenu {
     /**
      * Henter lånenummer fra brugeren.
      * 
-     * @return det indtastede lånenummer.
+     * @return det indtastede lånenummer som en streng.
      */
     private String inputLoanNumber() {   
         Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast Lånenummer på Lån:  ");
-        String loanNumber = keyboard.nextLine();
-        return loanNumber;
+        System.out.println(" Indtast lånenummer på lån: ");
+        return keyboard.nextLine();
     }
 
     /**
      * Henter lånedato fra brugeren.
      * 
-     * @return den indtastede lånedato.
+     * @return den indtastede lånedato som en streng.
      */
     private String inputBorrowDate() {   
         Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast lånedato på Lån:  ");
-        String borrowDate = keyboard.nextLine();
-        return borrowDate;
+        System.out.println(" Indtast lånedato på lån: ");
+        return keyboard.nextLine();
     }
 
     /**
      * Henter låneperioden fra brugeren.
      * 
-     * @return den indtastede låneperiode.
+     * @return den indtastede låneperiode som en streng.
      */
     private String inputPeriod() {   
         Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast låneperiode på Lån:  ");
-        String period = keyboard.nextLine();
-        return period;
+        System.out.println(" Indtast låneperiode på lån: ");
+        return keyboard.nextLine();
     }
 
     /**
-     * Henter status på lånet fra brugeren.
+     * Henter lånets status fra brugeren.
      * 
-     * @return den indtastede status.
+     * @return den indtastede status som en streng.
      */
     private String inputState() {   
         Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast stadie på Lån:  ");
-        String state = keyboard.nextLine();
-        return state;
+        System.out.println(" Indtast status på lån: ");
+        return keyboard.nextLine();
     }
 
     /**
-     * Henter returdatoen fra brugeren.
+     * Henter returdatoen for lånet fra brugeren.
      * 
-     * @return den indtastede returdato.
+     * @return den indtastede returdato som en streng.
      */
     private String inputReturnDate() {   
         Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast retunerdato på Lån:  ");
-        String returnDate = keyboard.nextLine();
-        return returnDate;
+        System.out.println(" Indtast returdato på lån: ");
+        return keyboard.nextLine();
     }
 
     /**
-     * Henter serienummeret på LP-kopien fra brugeren.
+     * Henter serienummeret for LP-kopien fra brugeren.
      * 
-     * @return det indtastede serienummer.
+     * @return det indtastede serienummer som en streng.
      */
     private String inputLPCopySerialNumber() {   
         Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast serienummer på LP kopi:  ");
+        System.out.println(" Indtast serienummer på LP kopi: ");
         return keyboard.nextLine();
     }
 
     /**
      * Henter telefonnummeret på vennen fra brugeren.
      * 
-     * @return det indtastede telefonnummer.
+     * @return det indtastede telefonnummer som en streng.
      */
     private String inputFriendPhone() {   
         Scanner keyboard = new Scanner(System.in);
-        System.out.println(" Indtast telefonnummer på ven:  ");
+        System.out.println(" Indtast telefonnummer på ven: ");
         return keyboard.nextLine();
     }
     
     /**
-     * Beskriver lånet ved at udskrive dets oplysninger.
+     * Beskriver og viser oplysninger om et lån.
+     * 
+     * @param loan Lån-objektet, der skal beskrives.
      */
     public void describeLoan(Loan loan) {
-        System.out.println("Lånenummer for lån er: " + loan.getLoanNumber());
-        System.out.println("Lånedato for lån er: " + loan.getBorrowDate());
-        System.out.println("Låneperiode for lån er: " + loan.getPeriod());
-        System.out.println("Stadie på lån er: " + loan.getState());
-        System.out.println("Retunerdato for lån er: " + loan.getReturnDate());
+        System.out.println("Lånenummer: " + loan.getLoanNumber());
+        System.out.println("Lånedato: " + loan.getBorrowDate());
+        System.out.println("Låneperiode: " + loan.getPeriod());
+        System.out.println("Status: " + loan.getState());
+        System.out.println("Returdato: " + loan.getReturnDate());
     }
 }

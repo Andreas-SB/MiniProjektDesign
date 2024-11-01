@@ -16,16 +16,15 @@ public class LPController {
     private LPContainer uniqueContainer;
 
     /**
-     * Konstruktør for objekter af klassen LPController.
-     * Initialiserer instansvariablerne.
+     * Konstruktør for LPController-objekter.
+     * Initialiserer instansvariablen uniqueContainer som en unik instans af LPContainer.
      */
     public LPController() {
-        // Initialiserer instansvariabler
         uniqueContainer = LPContainer.getUniqueInstance();
     }
 
     /**
-     * Opretter en ny LP med de angivne oplysninger.
+     * Opretter en ny LP med de angivne oplysninger og tilføjer den til LPContainer.
      * 
      * @param barcode Stregekoden til LP'en.
      * @param title Titlen på LP'en.
@@ -40,7 +39,7 @@ public class LPController {
     }
 
     /**
-     * Opretter en ny LP-kopi med de angivne oplysninger.
+     * Opretter en ny LP-kopi med de angivne oplysninger og tilføjer den til LPContainer.
      * 
      * @param serialNumber Serienummeret for LP-kopien.
      * @param purchaseDate Indkøbsdatoen for LP-kopien.
@@ -55,27 +54,33 @@ public class LPController {
     }
 
     /**
-     * Finder en LP baseret på titlen.
+     * Søger efter en LP baseret på dens titel.
      * 
      * @param title Titlen på LP'en der skal findes.
-     * @return Det fundne LP-objekt eller null hvis ikke fundet.
+     * @return Det fundne LP-objekt eller null, hvis ingen LP med den titel blev fundet.
      */
     public LP findLP(String title) {
         LPContainer instance = LPContainer.getUniqueInstance();
         foundLP = instance.findLPByTitle(title);
         return foundLP;
     }
-    
+
+    /**
+     * Søger efter en LP baseret på en LP-kopi.
+     * 
+     * @param lpCopy Den LP-kopi der ønskes at finde den tilhørende LP for.
+     * @return Det fundne LP-objekt eller null, hvis LP'en for denne kopi ikke findes.
+     */
     public LP findLP(LPCopy lpCopy) {
         foundLP = uniqueContainer.findLPForCopy(lpCopy);
         return foundLP;
     }
 
     /**
-     * Finder en LP-kopi baseret på serienummeret.
+     * Søger efter en LP-kopi baseret på serienummeret.
      * 
      * @param serialNumber Serienummeret for LP-kopien der skal findes.
-     * @return Det fundne LPCopy-objekt eller null hvis ikke fundet.
+     * @return Det fundne LPCopy-objekt eller null, hvis ingen kopi blev fundet.
      */
     public LPCopy findLPCopy(String serialNumber) {
         LPContainer instance = LPContainer.getUniqueInstance();
@@ -83,11 +88,10 @@ public class LPController {
     }
 
     /**
-     * Finder en LP-kopi og dens tilhørende LP-baseret på serienummeret.
+     * Søger efter en LP-kopi og dens tilhørende LP-baseret på serienummeret.
      * 
      * @param serialNumber Serienummeret for LP-kopien.
-     * @return Et array der indeholder LP-kopiens serienummer og LP'ens titel,
-     *         eller null hvis ikke fundet.
+     * @return LPCopy-objektet hvis fundet, eller null hvis ingen kopi findes.
      */
     public LPCopy findLPCopyAndTitle(String serialNumber) {
         LPCopy copy = uniqueContainer.findLPCopyByBarcode(serialNumber);

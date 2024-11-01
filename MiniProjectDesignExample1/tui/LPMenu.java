@@ -16,7 +16,7 @@ import controller.LPController;
 public class LPMenu
 {
     // instance variables - replace the example below with your own
-    LPController lpCl;
+    LPController lpCl;  //Controller til håndtering af LP-opearationer
     /**
      * Konstruktør for LPMenu-objektet.
      * Initialiserer instansvariablerne, hvis det er nødvendigt.
@@ -121,7 +121,7 @@ public class LPMenu
             System.out.println("LP kopi ikke fundet");
         }
     }
-    
+
     /**
      * Metode til at få et heltal fra brugeren.
      *
@@ -197,9 +197,9 @@ public class LPMenu
     }
 
     /**
-     * Opretter en kopi af en LP med brugerens input.
+     * Opretter en kopi af en LP med brugerens input, og tilføjer kopien til den fundne LP.
      *
-     * @return LP - Den LP, som kopien tilhører.
+     * @return LP - Den LP, som kopien tilhører, eller null hvis LP'en ikke findes.
      */
     private LP createLPCopy(){
         String serialNumber = inputLPCopySerialNumber();

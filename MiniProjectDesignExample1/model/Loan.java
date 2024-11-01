@@ -9,7 +9,7 @@ package model;
  */
 public class Loan {
     // Instansvariabler
-    private String loanNumber;    // Lånenummer
+    private String loanNumber;     // Lånenummer
     private String borrowDate;     // Dato for lånets oprettelse
     private String period;         // Låneperiode
     private String state;          // Lånets nuværende status
