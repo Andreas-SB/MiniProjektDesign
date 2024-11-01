@@ -59,6 +59,11 @@ public class LPTest
         
         
         //Assert
+        assertEquals(1, allCopys.size(), "Der skal kun være 1 copy");
+        assertEquals("321", serNo, "Serienummer burde være 321.");
+        assertEquals("31/10/2024", lpcopy1.getPurchaseDate(), "Dato på køb burde være '31/10/2024'.");
+        assertEquals("150", lpcopy1.getPurchasePrice(), "Prisen på den første copy burde være '150'.");
+        assertEquals("god", lpcopy1.getCondition(), "Stand af copy burde være'god'.");
    
     }
 }
