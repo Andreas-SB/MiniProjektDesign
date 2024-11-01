@@ -1,3 +1,5 @@
+package model;
+
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,19 +8,22 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
+
 /**
- * The test class MiniProjektTest.
+ * The test class LPTest.
  *
  * @author  (your name)
  * @version (a version number or a date)
  */
-public class MiniProjektTest
+public class LPTest
 {
+    private LP aLP;
     /**
-     * Default constructor for test class MiniProjektTest
+     * Default constructor for test class LPTest
      */
-    public MiniProjektTest()
+    public LPTest()
     {
+        aLP = new LP("123", "Blue", "Billie", "01/11/2024");
     }
 
     /**
@@ -29,6 +34,9 @@ public class MiniProjektTest
     @BeforeEach
     public void setUp()
     {
+        LPCopy lpcopy1 = new LPCopy("321", "31/10/2024", "150", "god");
+        aLP.addLPCopy(lpcopy1);
+        
     }
 
     /**
@@ -40,10 +48,15 @@ public class MiniProjektTest
     public void tearDown()
     {
     }
+    
     @Test
-    public void testCarModel(){
+    public void testLP(){
         //Arrange
         //Act
+        ArrayList<LPCopy> allCopys = aLP.getAllCopys();
+        LPCopy lpcopy1 = allCopys.get(0);
+        String serNo = lpcopy1.getSerialNumber();
+        
         
         //Assert
    

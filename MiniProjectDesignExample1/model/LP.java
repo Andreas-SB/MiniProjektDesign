@@ -69,6 +69,10 @@ public class LP {
     public String getPublicationDate() {
         return publicationDate;
     }
+    
+    public ArrayList<LPCopy> getAllCopys(){
+        return listCopy;
+    }
 
     /**
      * Henter listen over kopier af LP'en.
